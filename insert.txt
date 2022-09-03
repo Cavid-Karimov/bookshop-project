@@ -1,0 +1,89 @@
+flask shell ->
+
+1)---------------insert genre table------------------------
+
+from models import * 
+genre1 = Genre(genre_name="Roman")
+Genre.add(genre1)
+genre2 = Genre(genre_name="Science")
+Genre.add(genre2)
+genre3 = Genre(genre_name="Psychology")
+Genre.add(genre3)
+
+2)----------------insert language table---------------------
+
+from models import *
+lang1 = Language(lang_name="English")
+Language.add(lang1)
+
+lang2 = Language(lang_name="Azerbaijani")
+Language.add(lang2)
+
+lang3 = Language(lang_name="Russian")
+Language.add(lang3)
+
+3)---------------insert book table----------------------
+
+from models import *
+
+book1 = Book(title='Sefillər', author='Viktor Hugo', price=12.0, description='some text',image_url='../static/images/sefiller-book.jpeg',stock=90,language_id = 2, publisher='Qanun neshriyyat',genre_id=1)
+Book.add(book1)
+
+book2 = Book(title='Inkoqnito', author='David Eagleman', price=56.8, description='some text',image_url='../static/images/inkonito-book.jpg',stock=40,language_id = 1, publisher='Bertelsmann',genre_id=2)
+Book.add(book2)
+
+book3 = Book(title='1984', author='George Orwell', price=100, description='some text',image_url='../static/images/1984-book.jpg',stock=1200,language_id = 2, publisher='Penguin Random House',genre_id=3)
+Book.add(book3)
+
+book4 = Book(title='Menim adim qirmizi', author='Orhan Pamuk', price=9.4, description='some text',image_url='../static/images/menimadimqirmizi-book.jpeg',stock=120,language_id = 3, publisher='Thomson Reuters',genre_id=1)
+Book.add(book4)
+
+book5 = Book(title='Xeyanet', author='Elxan Elatli', price=34.9, description='some text',image_url='../static/images/xeyanet-book.jpeg',stock=500,language_id = 3, publisher='McGraw-Hill Education',genre_id=2)
+Book.add(book5)
+
+book6 = Book(title='Emosianal', author='Daniel Goleman', price=23.8, description='some text',image_url='../static/images/emosianal-book.jpeg',stock=2000,language_id = 1, publisher='RELX',genre_id=3)
+Book.add(book6)
+
+
+book7 = Book(title='Hobbit', author='Viktor Hugo', price=12.0, description='some text',image_url='../static/images/sefiller-book.jpeg',stock=90,language_id = 2, publisher='Qanun neshriyyat',genre_id=1)
+Book.add(book7)
+
+book8 = Book(title='LOTR', author='David Eagleman', price=56.8, description='some text',image_url='../static/images/inkonito-book.jpg',stock=40,language_id = 1, publisher='Bertelsmann',genre_id=2)
+Book.add(book8)
+
+book9 = Book(title='Harry Potter', author='George Orwell', price=100, description='some text',image_url='../static/images/1984-book.jpg',stock=1200,language_id = 2, publisher='Penguin Random House',genre_id=3)
+Book.add(book9)
+
+book10 = Book(title='Titanic', author='Orhan Pamuk', price=9.4, description='some text',image_url='../static/images/menimadimqirmizi-book.jpeg',stock=120,language_id = 3, publisher='Thomson Reuters',genre_id=1)
+Book.add(book10)
+
+book11 = Book(title='1918', author='Elxan Elatli', price=34.9, description='some text',image_url='../static/images/xeyanet-book.jpeg',stock=500,language_id = 3, publisher='McGraw-Hill Education',genre_id=2)
+Book.add(book11)
+
+book12 = Book(title='Heyvanisatan', author='Daniel Goleman', price=23.8, description='some text',image_url='../static/images/emosianal-book.jpeg',stock=2000,language_id = 1, publisher='RELX',genre_id=3)
+Book.add(book12)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+select book.title, book.author, book.description, book.image_url, book.stock, book.publisher, genre.name, language.language
+from book 
+inner join genre__book on book.id = genre__book.book_id
+inner join genre on genre__book.genre_id = genre.id
+inner join language__book on book.id = language__book.book_id
+inner join language on language__book.language_id = language.id
